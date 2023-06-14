@@ -8,8 +8,10 @@ for (let i = 0; i<16*16 ; i++){
     grid[i].textContent = "0";
 }*/
 
+let r,g,b =0;
 let penColor = "black"
 let gridDimentions = 960;
+let darkness = 229.5;
 
 let grid = [];
 
@@ -32,8 +34,11 @@ function setGrid (squaresPerSide){
         grid[i] = document.createElement('div');
         grid[i].classList.add(`content`);
         grid[i].style.cssText = `width: ${pixel}px; height: ${pixel}px;`
+        grid[i].style.backgroundColor = `rgb(255, 255, 255)`;
         grid[i].addEventListener('mouseover', () => {
-            grid[i].style.backgroundColor = penColor;
+            //getDarker(grid[i].style.backgroundColor);
+            rainbowPen ()
+            grid[i].style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
         });
         container.appendChild(grid[i]);
 }
@@ -46,6 +51,29 @@ function setPenColor (penColor){
         });
     }
 }
+
+function rainbowPen (){
+    r = (Math.random()*255);
+    g = (Math.random()*255);
+    b = (Math.random()*255);
+}
+
+function getDarker (color){
+    setRGB(color);
+    r = r -25.5;
+    g = g -25.5;
+    b = b -25.5;
+
+}
+
+function setRGB (color){
+    const re = /\d+/g;
+    let myArray = color.match(re); 
+    r = +myArray[0];
+    g = +myArray[1];
+    b = +myArray[2];
+}
+
 
 /*
 grid = document.querySelector('#container');
