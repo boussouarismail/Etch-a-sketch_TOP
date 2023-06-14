@@ -1,0 +1,17 @@
+#container {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-flow: wrap;
+    width: 960px;
+    height: 960px;
+    background-color: aqua;
+}
+
+.content {
+    outline: 1px solid black;
+}
+
+#resetGrid{
+    margin: 20px;
+}
